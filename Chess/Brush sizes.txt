@@ -1,0 +1,3 @@
+Size 21 for (main) border
+Size 16 for smaller details
+/shrug
