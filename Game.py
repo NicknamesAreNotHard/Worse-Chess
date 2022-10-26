@@ -27,4 +27,5 @@ wQueen = Piece('w', 'q', 'w_queen.png')
 bKnight = Piece('b', 'kn', 'b_knight.png')
 wKnight = Piece('w', 'kn', 'w_knight.png')
 wKnook = Piece('w', 'kno', 'w_knook.png')
-bKnook = Piece('w', 'kno', 'w_knook.png')
+bKnook = Piece('w', 'kno', 'b_knook.png')
+
