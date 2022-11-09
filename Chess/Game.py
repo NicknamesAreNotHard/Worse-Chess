@@ -29,8 +29,6 @@ bRat = Piece('b', 'ra', 'b_rat.png')
 wRat = Piece('w', 'ra', 'w_rat.png')
 wKnook = Piece('w', 'kno', 'w_knook.png')
 bKnook = Piece('w', 'kno', 'b_knook.png')
-wFrog = Piece("w", "f", "w_frog.png")
-bFrog = Piece("b", "f", "b_frog.png")
 
 starting_order = {(0, 0): pygame.image.load(bRook.image), (1, 0): pygame.image.load(bRat.image),
                   (2, 0): pygame.image.load(bBishop.image), (3, 0): pygame.image.load(bKing.image),
