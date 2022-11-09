@@ -1,7 +1,8 @@
 import pygame
 import time
 import sys
-
+import os
+print(os.getcwd())
 board = [['  ' for i in range(8)] for i in range(8)]
 
 
