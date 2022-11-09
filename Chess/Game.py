@@ -52,7 +52,20 @@ starting_order = {(0, 0): pygame.image.load(bRook.image), (1, 0): pygame.image.l
                   (2, 6): pygame.image.load(wPawn.image), (3, 6): pygame.image.load(wPawn.image),
                   (4, 6): pygame.image.load(wPawn.image), (5, 6): pygame.image.load(wPawn.image),
                   (6, 6): pygame.image.load(wPawn.image), (7, 6): pygame.image.load(wPawn.image),
-                  (0, 7): pygame.image.load(wRook.image), (1, 7): pygame.image.load(wKnight.image),
+                  (0, 7): pygame.image.load(wRook.image), (1, 7): pygame.image.load(wRat.image),
                   (2, 7): pygame.image.load(wBishop.image), (3, 7): pygame.image.load(wKing.image),
                   (4, 7): pygame.image.load(wQueen.image), (5, 7): pygame.image.load(wBishop.image),
-                  (6, 7): pygame.image.load(wKnight.image), (7, 7): pygame.image.load(wRook.image),}
+                  (6, 7): pygame.image.load(wRat.image), (7, 7): pygame.image.load(wRook.image),}
+
+def create_board(board):
+    board[0] = [Piece('b', 'r', 'b_rook.png'), Piece('b', 'kn', 'b_rat.png'), Piece('b', 'b', 'b_bishop.png'), \
+               Piece('b', 'q', 'b_queen.png'), Piece('b', 'k', 'b_king.png'), Piece('b', 'b', 'b_bishop.png'), \
+               Piece('b', 'kn', 'b_rat.png'), Piece('b', 'r', 'b_rook.png')]
+
+    board[7] = [Piece('w', 'r', 'w_rook.png'), Piece('w', 'kn', 'w_rat.png'), Piece('w', 'b', 'w_bishop.png'), \
+               Piece('w', 'q', 'w_queen.png'), Piece('w', 'k', 'w_king.png'), Piece('w', 'b', 'w_bishop.png'), \
+               Piece('w', 'kn', 'w_rat.png'), Piece('w', 'r', 'w_rook.png')]    
+    for i in range(8):
+        board[1][i] = Piece('b', 'p', 'b_pawn.png')
+        board[6][i] = Piece('w', 'p', 'w_pawn.png')
+    return board
