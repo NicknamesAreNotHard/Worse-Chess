@@ -25,15 +25,15 @@ bBishop = Piece('b', 'b', 'b_bishop.png')
 wBishop = Piece('w', 'b', 'w_bishop.png')
 bQueen = Piece('b', 'q', 'b_queen.png')
 wQueen = Piece('w', 'q', 'w_queen.png')
-bKnight = Piece('b', 'kn', 'b_knight.png')
-wKnight = Piece('w', 'kn', 'w_knight.png')
+bRat = Piece('b', 'kn', 'b_rat.png')
+wRat = Piece('w', 'kn', 'w_rat.png')
 wKnook = Piece('w', 'kno', 'w_knook.png')
 bKnook = Piece('w', 'kno', 'b_knook.png')
 
-starting_order = {(0, 0): pygame.image.load(bRook.image), (1, 0): pygame.image.load(bKnight.image),
+starting_order = {(0, 0): pygame.image.load(bRook.image), (1, 0): pygame.image.load(bRat.image),
                   (2, 0): pygame.image.load(bBishop.image), (3, 0): pygame.image.load(bKing.image),
                   (4, 0): pygame.image.load(bQueen.image), (5, 0): pygame.image.load(bBishop.image),
-                  (6, 0): pygame.image.load(bKnight.image), (7, 0): pygame.image.load(bRook.image),
+                  (6, 0): pygame.image.load(bRat.image), (7, 0): pygame.image.load(bRook.image),
                   (0, 1): pygame.image.load(bPawn.image), (1, 1): pygame.image.load(bPawn.image),
                   (2, 1): pygame.image.load(bPawn.image), (3, 1): pygame.image.load(bPawn.image),
                   (4, 1): pygame.image.load(bPawn.image), (5, 1): pygame.image.load(bPawn.image),
