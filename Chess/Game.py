@@ -1,4 +1,5 @@
 import pygame
+import tkinter as tk
 import time
 import sys
 import os
@@ -15,6 +16,7 @@ class Piece:
         self.type = type
         self.killable = killable
         self.image = image
+        self.moved = False
 
 bPawn = Piece('b', 'p', 'b_pawn.png')
 wPawn = Piece('w', 'p', 'w_pawn.png')
@@ -26,17 +28,17 @@ bBishop = Piece('b', 'b', 'b_bishop.png')
 wBishop = Piece('w', 'b', 'w_bishop.png')
 bQueen = Piece('b', 'q', 'b_queen.png')
 wQueen = Piece('w', 'q', 'w_queen.png')
-bKnight = Piece('b', 'kn', 'b_knight.png')
-wKnight = Piece('w', 'kn', 'w_knight.png')
+bRat = Piece('b', 'kn', 'b_rat.png')
+wRat = Piece('w', 'kn', 'w_rat.png')
 wKnook = Piece('w', 'kno', 'w_knook.png')
 bKnook = Piece('w', 'kno', 'b_knook.png')
 wFrog = Piece("w", "f", "w_frog.png")
 bFrog = Piece("b", "f", "b_frog.png")
-
-starting_order = {(0, 0): pygame.image.load(bRook.image), (1, 0): pygame.image.load(bKnight.image),
+"""
+starting_order = {(0, 0): pygame.image.load(bRook.image), (1, 0): pygame.image.load(bRat.image),
                   (2, 0): pygame.image.load(bBishop.image), (3, 0): pygame.image.load(bKing.image),
                   (4, 0): pygame.image.load(bQueen.image), (5, 0): pygame.image.load(bBishop.image),
-                  (6, 0): pygame.image.load(bKnight.image), (7, 0): pygame.image.load(bRook.image),
+                  (6, 0): pygame.image.load(bRat.image), (7, 0): pygame.image.load(bRook.image),
                   (0, 1): pygame.image.load(bPawn.image), (1, 1): pygame.image.load(bPawn.image),
                   (2, 1): pygame.image.load(bPawn.image), (3, 1): pygame.image.load(bPawn.image),
                   (4, 1): pygame.image.load(bPawn.image), (5, 1): pygame.image.load(bPawn.image),
@@ -55,22 +57,35 @@ starting_order = {(0, 0): pygame.image.load(bRook.image), (1, 0): pygame.image.l
                   (2, 6): pygame.image.load(wPawn.image), (3, 6): pygame.image.load(wPawn.image),
                   (4, 6): pygame.image.load(wPawn.image), (5, 6): pygame.image.load(wPawn.image),
                   (6, 6): pygame.image.load(wPawn.image), (7, 6): pygame.image.load(wPawn.image),
-                  (0, 7): pygame.image.load(wRook.image), (1, 7): pygame.image.load(wKnight.image),
+                  (0, 7): pygame.image.load(wRook.image), (1, 7): pygame.image.load(wRat.image),
                   (2, 7): pygame.image.load(wBishop.image), (3, 7): pygame.image.load(wKing.image),
                   (4, 7): pygame.image.load(wQueen.image), (5, 7): pygame.image.load(wBishop.image),
-                  (6, 7): pygame.image.load(wKnight.image), (7, 7): pygame.image.load(wRook.image),}
+                  (6, 7): pygame.image.load(wRat.image), (7, 7): pygame.image.load(wRook.image),}"""
+# Create the main window
+window = tk.Tk()
 
-def create_board(board):
-    board[0] = [Piece('b', 'r', 'b_rook.png'), Piece('b', 'kn', 'b_knight.png'), Piece('b', 'b', 'b_bishop.png'), \
-               Piece('b', 'q', 'b_queen.png'), Piece('b', 'k', 'b_king.png'), Piece('b', 'b', 'b_bishop.png'), \
-               Piece('b', 'kn', 'b_knight.png'), Piece('b', 'r', 'b_rook.png')]
+# Set the window title
+window.title("Interactive Chess Board")
 
-    board[7] = [Piece('w', 'r', 'w_rook.png'), Piece('w', 'kn', 'w_knight.png'), Piece('w', 'b', 'w_bishop.png'), \
-               Piece('w', 'q', 'w_queen.png'), Piece('w', 'k', 'w_king.png'), Piece('w', 'b', 'w_bishop.png'), \
-               Piece('w', 'kn', 'w_knight.png'), Piece('w', 'r', 'w_rook.png')]
+# Create a canvas to hold the board
+canvas = tk.Canvas(window, width=399, height=399)
 
-    for i in range(8):
-        board[1][i] = Piece('b', 'p', 'b_pawn.png')
-        board[6][i] = Piece('w', 'p', 'w_pawn.png')
-    return board
+# Draw the board using squares of alternating colors
+for row in range(8):
+  for col in range(8):
+    if (row + col) % 2 == 0:
+      color = "black"
+    else:
+      color = "white"
+    canvas.create_rectangle(row * 50, col * 50, (row + 1) * 50, (col + 1) * 50, fill=color)
 
+# Set up an event handler to respond to clicks on the board
+def handle_click(event):
+  print(f"Clicked at: ({event.x}, {event.y})")
+
+canvas.create_image(0, 0, anchor="nw", image=wKnook.image)
+canvas.bind("<Button-1>", handle_click)
+
+# Pack the canvas into the window and show the window
+canvas.pack()
+window.mainloop()
